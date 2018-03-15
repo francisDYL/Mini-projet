@@ -30,13 +30,18 @@
 
 
 /* Full-width input fields */
-input[type=text], input[type=password] {
+input[type=text], input[type=password], input[type=email] {
     width: 100%;
     padding: 12px 20px;
     margin: 8px 0;
     display: inline-block;
     border: 1px solid #ccc;
     box-sizing: border-box;
+}
+
+/*dysplay input type radio*/
+input[type=radio]{
+    margin-left: 20px;
 }
 
 /* Set a style for all buttons */

@@ -14,14 +14,36 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <script>
             // Get the modal
-            var modal = document.getElementById('id01');
-            
-            // When the user clicks anywhere outside of the modal, close it
-            window.onclick = function(event) {
-                if (event.target == modal) {
-                    modal.style.display = "none";
-                }
-            }
+            $(function() {
+                $('#id01').on('click', function(e) {
+                    // Lorsque le formulaire est affiché, il s'estompe à la condition
+                    // d'avoir un click à droite ou à gauche du formulaire. On fixe alors
+                    // une position minimum et un maximum horizontale
+                    var minwidth = ($(window).width() - $('#id01 form').width())/2;
+                    var maxwidth = minwidth + $('#id01 form').width();
+
+                    var minheight = ($(window).height() - $('#id01 form').height())/2;
+                    var maxheight = minheight + $('#id01 form').height();
+                    
+                    if (e.pageX < minwidth || e.pageX > maxwidth || e.pageY<minheight || e.pageY>maxheight)
+                        $('#id01').fadeOut(200);
+                });
+
+                $('#id02').on('click', function(e) {
+                    // Lorsque le formulaire est affiché, il s'estompe à la condition
+                    // d'avoir un click à droite ou à gauche du formulaire. On fixe alors
+                    // une position minimum et un maximum horizontale
+                    var minwidth = ($(window).width() - $('#id02 form').width())/2;
+                    var maxwidth = minwidth + $('#id02 form').width();
+
+                    var minheight = ($(window).height() - $('#id02 form').height())/2;
+                    var maxheight = minheight + $('#id02 form').height();
+                    
+                    if (e.pageX < minwidth || e.pageX > maxwidth || e.pageY<minheight || e.pageY>maxheight)
+                        $('#id02').fadeOut(200);
+                });
+            });
+
     </script>
     <title>Welcome</title>
 </head>
@@ -36,8 +58,8 @@
                             <li role="presentation"><a href="#">A propos</a></li>
                             <li role="presentation"><a href="#">Projets </a></li>
                             <li role="presentation"><a href="#">Contact </a></li>
-                            <li role="presentation" ><a href="#" id="sign-up-button">Inscription </a></li>
-                            <li role="presentation" onclick="document.getElementById('id01').style.display='block'"><a href="#" >Connexion </a></li>
+                            <li role="presentation" onclick="document.getElementById('id02').style.display='block'"><a href="#" id="sign-up-button">Inscription </a></li>
+                            <li role="presentation" onclick="document.getElementById('id01').style.display='block'"><a href="#" id="sign-in-button">Connexion </a></li>
                         </ul>
                     </div>
                 </div>
@@ -105,7 +127,7 @@
                             </ul>
                         </div>
                   </div>
-
+                <!-- formulaire de connexion -->
                   <div id="id01" class="modal">
                         <form class="modal-content animate" action="/action_page.php">
                             <div class="imgcontainer">
@@ -114,26 +136,57 @@
                             </div>
                         
                             <div class="container">
-                            <label for="uname"><b>Username</b></label>
-                            <input type="text" placeholder="Enter Username" name="uname" required>
-                        
-                            <label for="psw"><b>Password</b></label>
-                            <input type="password" placeholder="Enter Password" name="psw" required>
-                                
-                            <button type="submit">Login</button>
-                            <label>
-                                <input type="checkbox" checked="checked" name="remember"> Remember me
-                            </label>
+                                <label for="emaillogin"><b>Email</b></label>
+                                <input type="email" placeholder="Enter Email" name="emaillogin" required>
+                            
+                                <label for="pswlogin"><b>Password</b></label>
+                                <input type="password" placeholder="Enter Password" name="pswlogin" required>
+                                    
+                                <button type="submit">Login</button>
+                                <label>
+                                    <input type="checkbox" checked="checked" name="remember"> Remember me
+                                </label>
                             </div>
                         
                             <div class="container" style="background-color:#f1f1f1">
-                            <button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">Cancel</button>
-                            <span class="psw">Forgot <a href="#">password?</a></span>
+                                <button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">Cancel</button>
+                                <span class="psw">Forgot <a href="#">password?</a></span>
                             </div>
                         </form>
                 </div>
 
-    <!-- ---------------------------------------------------------------------- -->
-    
+    <!-- formulaire d'inscripption -->
+    <div id="id02" class="modal">
+        <form class="modal-content animate" action="/action_page.php">
+            <div class="imgcontainer">
+            <span onclick="document.getElementById('id02').style.display='none'" class="close" title="Close Modal">&times;</span>
+           
+            </div>
+        
+            <div class="container">
+                <label for="uname"><b>Username</b></label>
+                <input type="text" placeholder="Enter Username" name="uname" required>
+                
+                <label for="emailsignup"><b>Email</b></label>
+                <input type="email" placeholder="Enter Email" name="emailsignup" required>
+
+                <label for="pswsignup"><b>Password</b></label>
+                <input type="password" placeholder="Enter Password" name="pswsignup" required>
+                
+                <label for="pswsignup"><b>Confirm Password</b></label>
+                <input type="password" placeholder="Enter Password" name="pswsignup2" required>
+
+                <label for="sexe"><b>Sexe</b></label>
+                <input type="radio"  name="sexe" required> Homme
+                <input type="radio"  name="sexe" required> Femme
+
+                <button type="submit" class="sign-up-button">sign UP</button>
+            </div>
+        
+            <div class="container" style="background-color:#f1f1f1">
+            <button type="button" onclick="document.getElementById('id02').style.display='none'" class="cancelbtn">Cancel</button>
+            </div>
+        </form>
+</div>
 </body>
 </html>
