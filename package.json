@@ -1,0 +1,22 @@
+{
+  "name": "mini-projet",
+  "version": "1.0.0",
+  "description": "front-end-of-parcit",
+  "main": "app.js",
+  "scripts": {
+    "test": "node app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/francisDYL/Mini-projet.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/francisDYL/Mini-projet/issues"
+  },
+  "homepage": "https://github.com/francisDYL/Mini-projet#readme",
+  "dependencies": {
+    "express": "^4.16.3"
+  }
+}
