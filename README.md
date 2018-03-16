@@ -6,3 +6,4 @@
 #tu tape la commande npm install
 #puis tu fais un node app.js
 #tu lance le navigateur et tu tappe localhost:3000 et tu as la page d'acceuil
+#l'eamil est parcit@parcit.com et le mot de passe est parcit
