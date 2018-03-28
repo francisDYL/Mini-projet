@@ -7,17 +7,24 @@
     width: 100%;
     background: rgb(44, 205, 226);
 }
+.listDesProjets{
+    height: auto;
+    width: 50%;
+    margin:5px;
+    padding:30px,30px,30px,30px;
+    background-color:rgba(117, 182, 224, 0.938);
+}
 
 .welcomeContanct{
     width: 100%;
     height: auto;
-    background: rgb(60, 216, 73);
+    background: rgba(117, 182, 224, 0.938);
 }
 .carousel-inner>.item>a>img,.carousel-inner>.item>img,.img-responsive,.thumbnail a>img,.thumbnail>img
 {
     display:block;
     width:100%;
-    height:400px;
+    height:500px;
 }
 
 @media (max-width: 576px) { 

@@ -2,6 +2,7 @@
 <html lang="en" ng-app="myApp" >
 <head>
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+        
 
 <!-- jQuery library -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
@@ -23,21 +24,18 @@
                     // une position minimum et un maximum horizontale
                     var minwidth = ($(window).width() - $('#id01 form').width())/2;
                     var maxwidth = minwidth + $('#id01 form').width();
-
                     var minheight = ($(window).height() - $('#id01 form').height())/2;
                     var maxheight = minheight + $('#id01 form').height();
                     
                     if (e.pageX < minwidth || e.pageX > maxwidth || e.pageY<minheight || e.pageY>maxheight)
                         $('#id01').fadeOut(200);
                 });
-
                 $('#id02').on('click', function(e) {
                     // Lorsque le formulaire est affiché, il s'estompe à la condition
                     // d'avoir un click à droite ou à gauche du formulaire. On fixe alors
                     // une position minimum et un maximum horizontale
                     var minwidth = ($(window).width() - $('#id02 form').width())/2;
                     var maxwidth = minwidth + $('#id02 form').width();
-
                     var minheight = ($(window).height() - $('#id02 form').height())/2;
                     var maxheight = minheight + $('#id02 form').height();
                     
@@ -45,11 +43,31 @@
                         $('#id02').fadeOut(200);
                 });
             });
-
     </script>
     <script>
         //module principale de l'application
             var app = angular.module("myApp", ["ngRoute"]);
+            app.controller('MyControle', function ($scope) {
+            $scope.projets=[
+                            {
+                                "id":"ee20",
+                                "name":"Mery",
+                                "description":"c'est un projet de backEnd"
+                            
+                            },
+                            {
+                                "id":"e83",
+                                "name":"Asmaa",
+                                "description":"c'est un projet de design"
+                            
+                            },
+                            {
+                                "id":"e80",
+                                "name":"Willy",
+                                "description":"c'est un projet de fontEnd"
+                            }
+                            ];
+            });
             app.config(function($routeProvider) {
                 $routeProvider
                 .when("/", {
@@ -80,7 +98,6 @@
                     alert( "failure message: " + JSON.stringify({data: data}));
                      });
                 }
-
                 //vérifie si l'utilisateur est bien connecté
                 this.islogged = function () {
                     $http.post("/issession")
@@ -102,19 +119,15 @@
                      })
                 }
             });
-
             app.controller("CtrlConnection", function($scope,session) {
                 $scope.login = function() {		
                     session.connect($scope.emaillogin,$scope.pswlogin);    
                 }
             });
-
             app.controller("dashCtrl",function($scope,session){
-
                 $scope.check=function(){
                     session.islogged(); 
                 }
-
                 $scope.logout=function(){
                     session.deconnect();
                 }
