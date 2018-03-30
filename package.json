@@ -21,6 +21,7 @@
     "@angular/cdk": "^5.2.4",
     "@angular/material": "^5.2.4",
     "angular-data-grid": "^1.0.0",
+    "angular-utils-pagination": "^0.11.1",
     "body-parser": "^1.18.2",
     "express": "^4.16.3",
     "express-session": "^1.15.6",

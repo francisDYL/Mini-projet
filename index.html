@@ -3,7 +3,7 @@
 <head>
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
         
-
+        <link  href="https://github.com/angular-ui/bootstrap/blob/master/src/pagination/pagination.js">
 <!-- jQuery library -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 
@@ -11,6 +11,7 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular-route.js"></script>
+
 <link rel="stylesheet" type="text/css" href="css/layout.css">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -44,30 +45,52 @@
                 });
             });
     </script>
+    
+    
     <script>
         //module principale de l'application
-            var app = angular.module("myApp", ["ngRoute"]);
-            app.controller('MyControle', function ($scope) {
-            $scope.projets=[
-                            {
-                                "id":"ee20",
-                                "name":"Mery",
-                                "description":"c'est un projet de backEnd"
-                            
-                            },
-                            {
-                                "id":"e83",
-                                "name":"Asmaa",
-                                "description":"c'est un projet de design"
-                            
-                            },
-                            {
-                                "id":"e80",
-                                "name":"Willy",
-                                "description":"c'est un projet de fontEnd"
+        var app = angular.module('myApp', ['ngRoute']);
+                app.controller('MyCtrl', ['$scope', '$filter', function ($scope, $filter) {
+                    $scope.currentPage = 0;
+                    $scope.pageSize = 10;
+                    $scope.data = [
+                        ""
+                    ];
+                    $scope.q = '';
+                    
+                    $scope.getData = function () {
+                        var arr = [];
+                        if($scope.q == '') {
+                            arr = $scope.data;
+                        } else {
+                            for(var ea in $scope.data) {
+                                if($scope.data[ea].indexOf($scope.q) > -1) {
+                                    arr.push( $scope.data[ea] );
+                                }
                             }
-                            ];
+                        }
+                        return arr;
+                   
+                    }
+                    
+                    $scope.numberOfPages=function(){
+                        return Math.ceil($scope.getData().length/$scope.pageSize);                
+                    }
+                    
+                    /*for (var i=0; i<65; i++) {
+                        $scope.data.push("Item "+i);
+                    }*/
+                }]);
+
+                //We already have a limitTo filter built-in to angular,
+                //let's make a startFrom filter
+                app.filter('startFrom', function() {
+                    return function(input, start) {
+                        start = +start; //parse to int
+                        return input.slice(start);
+                    }
             });
+            
             app.config(function($routeProvider) {
                 $routeProvider
                 .when("/", {
@@ -136,6 +159,7 @@
     <title>Welcome</title>
 </head>
 <body ng-view>
+       
 
 </body>
 </html>
