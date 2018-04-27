@@ -120,7 +120,14 @@ span.psw {
     background-color: #fefefe;
     margin:  auto; /* 5% from the top, 15% from the bottom and centered */
     border: 1px solid #888;
-    width: 80%; /* Could be more or less, depending on screen size */
+    width: 40%; /* Could be more or less, depending on screen size */
+}
+.my-form {
+    transition:all linear 0.5s;
+    background: transparent;
+}
+.my-form.ng-invalid {
+    background: red;
 }
 
 /* The Close Button (x) */
@@ -164,4 +171,82 @@ span.psw {
     .cancelbtn {
        width: 100%;
     }
+}
+/*Change styles for List of projets*/
+section.resume-section {
+  border-bottom: 1px solid #c5b9bd;
+  padding-top: 5rem !important;
+  padding-bottom: 5rem !important;
+}
+
+section.resume-section .resume-item .resume-date {
+  min-width: none;
+}
+
+@media (min-width: 768px) {
+  section.resume-section {
+    min-height: 100vh;
+  }
+  section.resume-section .resume-item .resume-date {
+    min-width: 18rem;
+  }
+}
+
+@media (min-width: 992px) {
+  section.resume-section {
+    padding-top: 3rem !important;
+    padding-bottom: 3rem !important;
+  }
+}
+.text-primary {
+    color: #BD5D38 !important;
+  }
+@media (min-width: 768px) {
+    .text-md-left { text-align: left; }
+    .text-md-right { text-align: right; }
+    .text-md-center { text-align: center; }
+    .text-md-justify { text-align: justify; }
+}
+.divProjet {
+    margin: 15px 0;
+    background: rgba(247, 247, 247, 0.9); /* Black background with 0.5 opacity */
+    color: #023b3b; /* Grey text */
+    width: 100%; /* Full width */
+    padding: 20px; /* Some padding */
+}
+.ProjetsHeader {
+    
+    background: rgba(72, 88, 85, 0.5); /* Black background with 0.5 opacity */
+    color: #ebf1f1; /* Grey text */
+    width: 70%; /* Full width */
+    padding: 20px; /* Some padding */
+    border-bottom: 1px solid #c5b9bd;
+    position: absolute;
+    top: 160px;
+    left:0;
+    right:0;
+    margin-left:auto;
+    margin-right:auto;
+
+    
+}
+
+/*Style for Body*/
+.bg-grey {
+    background-color: #f6f6f6;
+}
+body {
+    font: 400 15px Lato, sans-serif;
+    line-height: 1.8;
+    color: #818181;
+    background-image:url(../images/pexels-6.jpeg);
+    background-attachment:fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 100%; 
+}
+h1 {
+    text-align: center;
+    
 }
