@@ -1,5 +1,5 @@
 <div  ng-controller="dashCtrl" ng-init="check()">
-  <script src="js/layout2.js"></script>
+ <!-- <script src="js/layout2.js"></script> -->
     <nav class="navbar navbar-default navbar-fixed-top">
         <div class="container-fluid">
             <div class="navbar-header"><a class="navbar-brand navbar-link" href="#">PARCIT </a>
@@ -21,17 +21,18 @@
       </div>
       
       <div class="main" id="mainContent">
-        <form id="regForm" action="#">
+        <form id="regForm" ng-controller="formCtrl" ng-init="initialisation()">
             <h1>Ajouter un Projet:</h1>
             <!-- One "tab" for each step in the form: -->
-            <div class="tab">Name:
-              <p><input placeholder="First name..." oninput="this.className = ''" name="fname"></p>
-              <p><input placeholder="Last name..." oninput="this.className = ''" name="lname"></p>
-              <p><input placeholder="Last name..." oninput="this.className = ''" name="lname"></p>
-              <p><input placeholder="Last name..." oninput="this.className = ''" name="lname"></p>
-              <p><input placeholder="Last name..." oninput="this.className = ''" name="lname"></p>
-              <p><input placeholder="Last name..." oninput="this.className = ''" name="lname"></p>
-              <p><input placeholder="Last name..." oninput="this.className = ''" name="lname"></p>
+            <div class="tab container">Information générale:
+                  <label for="emaillogin"><b>Nom</b></label>
+                  <input type="text" placeholder="Nom projet" ng-model="nomproj" required>
+                    
+                  <label for="pswlogin"><b>Lieu</b></label>
+                  <input type="text" placeholder="Lieu" ng-model="lieuproj" required>
+
+                  <label for="pswlogin"><b>Description</b></label>
+                  <textarea name="" ng-model="descriptionproj" cols="30" rows="10"></textarea>
             </div>
             
             <div class="tab" id="workSpace" >Diagramme de Gantt
@@ -39,8 +40,8 @@
             </div>
             <div style="overflow:auto;">
               <div style="float:right;">
-                <button type="button" id="prevBtn" onclick="nextPrev(-1)" class="ctl">Previous</button>
-                <button type="button" id="nextBtn" onclick="nextPrev(1)" class="ctl">Next</button>
+                <button type="button" id="prevBtn" ng-click="nextPrev(-1)" class="ctl">Previous</button>
+                <button type="button" id="nextBtn" ng-click="nextPrev(1)" class="ctl">Next</button>
               </div>
             </div>
             <!-- Circles which indicates the steps of the form: -->
@@ -323,7 +324,7 @@
           <button onclick="ge.gantt.showCriticalPath=!ge.gantt.showCriticalPath; ge.redraw();return false;" class="button textual icon requireCanSeeCriticalPath" title="CRITICAL_PATH"><span class="teamworkIcon">&pound;</span></button>
         <span class="ganttButtonSeparator requireCanSeeCriticalPath"></span>
           <button onclick="ge.splitter.resize(.1);return false;" class="button textual icon" ><span class="teamworkIcon">F</span></button>
-          <button onclick="ge.splitter.resize(50);return false;" class="button textual icon" ><span class="teamworkIcon">O</span></button>
+          <button onclick="ge.splitter.resize(50);return false;" class="button textual icon" id="50-split" ><span class="teamworkIcon">O</span></button>
           <button onclick="ge.splitter.resize(100);return false;" class="button textual icon"><span class="teamworkIcon">R</span></button>
           <span class="ganttButtonSeparator"></span>
           <button onclick="$('#workSpace').trigger('fullScreen.gantt');return false;" class="button textual icon" title="FULLSCREEN" id="fullscrbtn"><span class="teamworkIcon">@</span></button>
@@ -331,13 +332,13 @@
     
         <button onclick="editResources();" class="button textual requireWrite" title="edit resources"><span class="teamworkIcon">M</span></button>
           &nbsp; &nbsp; &nbsp; &nbsp;
-        <button onclick="saveGanttOnServer();" class="button first big requireWrite" title="Save">Save</button>
+        
         <button onclick='newProject();' class='button requireWrite newproject'><em>clear project</em></button>
         <button class="button login" title="login/enroll" onclick="loginEnroll($(this));" style="display:none;">login/enroll</button>
         <button class="button opt collab" title="Start with Twproject" onclick="collaborate($(this));" style="display:none;"><em>collaborate</em></button>
         </div></div>
       --></div>
-    
+    <!-- bouton sauvegarde <button onclick="saveGanttOnServer();" class="button first big requireWrite" title="Save">Save</button> -->
     <div class="__template__" type="TASKSEDITHEAD"><!--
       <table class="gdfTable" cellspacing="0" cellpadding="0">
         <thead>
@@ -361,7 +362,7 @@
     
     <div class="__template__" type="TASKROW"><!--
       <tr id="tid_(#=obj.id#)" taskId="(#=obj.id#)" class="taskEditRow (#=obj.isParent()?'isParent':''#) (#=obj.collapsed?'collapsed':''#)" level="(#=level#)">
-        <th class="gdfCell edit" align="right" style="cursor:pointer;"><span class="taskRowIndex">(#=obj.getRow()+1#)</span> <span class="teamworkIcon" style="font-size:12px;" >e</span></th>
+        <th class="gdfCell edit" align="right" style="cursor:pointer;"><span class="taskRowIndex">(#=obj.getRow()+1#)</span> <span class="teamworkIcon" style="font-size:12px;" id="edit-fictif" >e</span></th>
         <td class="gdfCell noClip" align="center"><div class="taskStatus cvcColorSquare" status="(#=obj.status#)"></div></td>
         <td class="gdfCell"><input type="text" name="code" value="(#=obj.code?obj.code:''#)" placeholder="code/short name"></td>
         <td class="gdfCell indentCell" style="padding-left:(#=obj.level*10+18#)px;">
@@ -571,3 +572,4 @@
       }
     
     </script>
+    <div id="fictif">n</div>
