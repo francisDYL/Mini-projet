@@ -3,7 +3,7 @@ var app     = express();
 var path    = require("path");
 var bodyParser = require('body-parser');
 var session = require('express-session');
-
+var cons = require('consolidate');
 
 
 app.use( session({secret : 's3Cur3',resave: false,saveUninitialized: false, cookie: {
@@ -17,14 +17,21 @@ app.use(bodyParser.urlencoded({extended: true}));
 // set static directories
 app.use(express.static(path.join(__dirname, 'static')));
 
+// Load View Engine
+
+// view engine setup
+app.engine('html', cons.swig)
+app.set('views', path.join(__dirname, 'views'));
+app.set('view engine', 'html');
+
 app.get('/', function (req, res) {
-    res.sendFile(path.join(__dirname+ '/index.html'));
+    res.render('index');
 });
 app.get('/main.html', function (req, res) {
-    res.sendFile(path.join(__dirname+ '/main.html'));
+    res.render('main');
 });
 app.get('/dashboard.html', function (req, res) {
-    res.sendFile(path.join(__dirname+ '/dashboard.html'));
+    res.render('dashboard');
 });
 
 //connexion de l'utilisateur
