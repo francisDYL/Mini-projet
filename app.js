@@ -4,7 +4,20 @@ var path    = require("path");
 var bodyParser = require('body-parser');
 var session = require('express-session');
 var cons = require('consolidate');
+const mongoose = require('mongoose');
 
+mongoose.connect(config.database);
+let db = mongoose.connection;
+
+// Check connection
+db.once('open', function(){
+  console.log('Connected to MongoDB');
+});
+
+// Check for DB errors
+db.on('error', function(err){
+  console.log(err);
+});
 
 app.use( session({secret : 's3Cur3',resave: false,saveUninitialized: false, cookie: {
             path: "/",
@@ -23,6 +36,12 @@ app.use(express.static(path.join(__dirname, 'static')));
 app.engine('html', cons.swig)
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'html');
+
+// Passport Config
+require('./config/passport')(passport);
+// Passport Middleware
+app.use(passport.initialize());
+app.use(passport.session());
 
 app.get('/', function (req, res) {
     res.render('index');
@@ -63,6 +82,9 @@ app.post('/deconnexion',function(req,res){
 	res.clearCookie();
 	res.redirect('/');
 });
+
+let users = require('./routes/users');
+app.use('/users', users);
 
 var port = process.env.PORT || 3000;
 app.listen(port);
