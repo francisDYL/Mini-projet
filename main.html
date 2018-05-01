@@ -82,8 +82,8 @@
                         </div>
                     </div>
                         <div class="resume-item d-flex flex-column flex-md-row mb-5 divProjet" ng-repeat="item in data | filter:{nom:_query1,description:_query2} | orderBy: order2 | startFrom:currentPage*pageSize | limitTo:pageSize">
-                            <div class="resume-content mr-auto">
-                                <h2 class="mb-0">{{item.nom}}</h2>
+                            <div ng-click="myFunc($event,item)" class="resume-content mr-auto">
+                                <h2 class="mb-0">{{item.id}}</h2>
                                 <div class="subheading mb-3">{{item.responsable}}</div>
                                 <p>{{item.description}}</p>
                             </div>
@@ -98,6 +98,45 @@
                             <button ng-disabled="currentPage >= getData().length/pageSize - 1" ng-click="currentPage=currentPage+1">
                                 Next
                             </button>
+                            <script type="text/ng-template" id="dialog1.tmpl.html">
+                                <md-dialog aria-label="Mango (Fruit)">
+                                <form ng-cloak>
+                                  <md-toolbar>
+                                    <div class="md-toolbar-tools">
+                                      <h2>Mango (Fruit)</h2>
+                                      <span flex></span>
+                                      <md-button class="md-icon-button" ng-click="cancel()">
+                                       Cancel
+                                      </md-button>
+                                    </div>
+                                  </md-toolbar>
+                              
+                                  <md-dialog-content>
+                                    <div class="md-dialog-content">
+                                      <h2>ID Projet est {{currentprojet.id}}</h2>
+                                      
+                                    <p>
+                                        {{currentprojet.description}}
+                                    </p>
+        
+                                    </div>
+                                  </md-dialog-content>
+                              
+                                  <md-dialog-actions layout="row">
+                                    <md-button href="http://en.wikipedia.org/wiki/Mango" target="_blank" md-autofocus>
+                                      More on Wikipedia
+                                    </md-button>
+                                    <span flex></span>
+                                    <md-button ng-click="answer('not useful')">
+                                     Not Useful
+                                    </md-button>
+                                    <md-button ng-click="answer('useful')" class="md-primary">
+                                      Useful
+                                    </md-button>
+                                  </md-dialog-actions>
+                                </form>
+                              </md-dialog>
+                              </script>
                 </section>                
          </div>
         <!-- formulaire de connexion -->
@@ -107,6 +146,9 @@
                     <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span>
                     </div>
                     <div class="container" >
+                        <label for="role"><b>Comme</b></label>
+                            <input type="radio"  name="role" required> User
+                            <input type="radio"  name="role" required> Prestataire<br>
                         <label for="emaillogin"><b>Email</b></label>
                         <input type="email" placeholder="Enter Email" ng-model="emaillogin"name="email" required>
                         <div role="alert">
