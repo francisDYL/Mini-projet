@@ -232,7 +232,7 @@ section.resume-section .resume-item .resume-date {
 }
 .divProjet {
     margin: 15px 0;
-    background: rgba(247, 247, 247, 0.9); /* Black background with 0.5 opacity */
+    background: rgba(32, 29, 29, 0.9); /* Black background with 0.5 opacity */
     color: #023b3b; /* Grey text */
     width: 100%; /* Full width */
     padding: 20px; /* Some padding */
@@ -273,3 +273,6 @@ h1 {
     text-align: center;
     
 }
+
+
+  

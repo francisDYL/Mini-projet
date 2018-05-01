@@ -26,7 +26,12 @@ app.get('/main.html', function (req, res) {
 app.get('/dashboard.html', function (req, res) {
     res.sendFile(path.join(__dirname+ '/dashboard.html'));
 });
-
+app.get('/navigation.html', function (req, res) {
+    res.sendFile(path.join(__dirname+ '/navigation.html'));
+});
+app.get('/profil.html', function (req, res) {
+    res.sendFile(path.join(__dirname+ '/profil.html'));
+});
 //connexion de l'utilisateur
 app.post('/login',function(req,res){
     if(req.body.email == "parcit@parcit.com" && req.body.psw == "parcit"){
