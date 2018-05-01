@@ -34,7 +34,7 @@ app.get('/profil.html', function (req, res) {
 });
 //connexion de l'utilisateur
 app.post('/login',function(req,res){
-    if(req.body.email == "parcit@parcit.com" && req.body.psw == "parcit"){
+    if(req.body.email == "parcit@parcit.com" && req.body.psw == "parcit" && req.body.type=="prestataire"){
         req.session.user={name:"Parcituser",email:"parcit@parcit.com",psw:"parcit"};
         res.send({success:true,user:req.session.user});
         

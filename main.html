@@ -146,11 +146,11 @@
                     <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span>
                     </div>
                     <div class="container" >
-                        <label for="role"><b>Comme</b></label>
-                            <input type="radio"  name="role" required> User
-                            <input type="radio"  name="role" required> Prestataire<br>
+                        <label for="typelogin"><b>Comme</b></label>
+                            <input type="radio" ng-model="typelogin" value="user"> user
+                            <input type="radio" ng-model="typelogin" value="prestataire">prestataire<br>
                         <label for="emaillogin"><b>Email</b></label>
-                        <input type="email" placeholder="Enter Email" ng-model="emaillogin"name="email" required>
+                        <input type="email" placeholder="Enter Email" ng-model="emaillogin" name="email" required>
                         <div role="alert">
                                 <span class="error" ng-show="myForm.email.$error.email">
                                   Not valid email!</span>
