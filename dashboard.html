@@ -1,4 +1,4 @@
-<div  ng-controller="dashCtrl" ng-init="check()">
+<div  ng-controller="dashCtrl" ng-init="check()" class="bodytemplate">
  <!-- <script src="js/layout2.js"></script> -->
     <nav class="navbar navbar-default navbar-fixed-top">
         <div class="container-fluid">
@@ -14,28 +14,32 @@
     </nav>
 
     <div class="sidenav">
-        <a href="#about">About</a>
-        <a href="#services">Services</a>
-        <a href="#clients">Clients</a>
-        <a href="#contact">Contact</a>
+        <ul>
+          <li>Ajout d'un Projet</li>
+          <li>Ajout d'un prestataire</li>
+          <li>Consulter les Projets</li>
+          <li>Profil</li>
+          <li><a href="#!evaluation">evaluation</a></li>
+        </ul>
       </div>
       
-      <div class="main" id="mainContent">
+      <div class="main container" id="mainContent">
         <form id="regForm" ng-controller="formCtrl" ng-init="initialisation()">
             <h1>Ajouter un Projet:</h1>
             <!-- One "tab" for each step in the form: -->
-            <div class="tab container">Information générale:
+            <div class="tab container">
+              <h3>Information générale:</h3>
                   <label for="emaillogin"><b>Nom</b></label>
                   <input type="text" placeholder="Nom projet" ng-model="nomproj" required>
                     
                   <label for="pswlogin"><b>Lieu</b></label>
                   <input type="text" placeholder="Lieu" ng-model="lieuproj" required>
 
-                  <label for="pswlogin"><b>Description</b></label>
-                  <textarea name="" ng-model="descriptionproj" cols="30" rows="10"></textarea>
+                  <label for="pswlogin"><b>Description</b></label><p></p>
+                  <textarea name="" ng-model="descriptionproj" cols="100" rows="5"></textarea>
             </div>
             
-            <div class="tab" id="workSpace" >Diagramme de Gantt
+            <div class="tab container" id="workSpace" >Diagramme de Gantt
               
             </div>
             <div style="overflow:auto;">
@@ -49,7 +53,9 @@
               <span class="step"></span>
               <span class="step"></span>
             </div>
+             
           </form>
+          
       </div>
 </div>
 
@@ -539,7 +545,7 @@
         <td align="center"><span class="teamworkIcon delRes del" style="cursor: pointer">d</span></td>
       </tr>
       --></div>
-    </div>
+
     <script type="text/javascript">
     
     
@@ -572,4 +578,3 @@
       }
     
     </script>
-    <div id="fictif">n</div>

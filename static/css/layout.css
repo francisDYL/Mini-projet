@@ -270,6 +270,11 @@ body {
     height: 100%; 
 }
 h1 {
-    text-align: center;
-    
+    text-align: center;  
+}
+
+.bodytemplate{
+    height: 100%;
+    overflow: scroll;
+    background: white;
 }

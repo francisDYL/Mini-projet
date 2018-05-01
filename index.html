@@ -57,8 +57,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <script>
             // Get the modal
-            $(function() {
-                $('#id01').on('click', function(e) {
+               /* $('#id01').on('click', function(e) {
                     // Lorsque le formulaire est affiché, il s'estompe à la condition
                     // d'avoir un click à droite ou à gauche du formulaire. On fixe alors
                     // une position minimum et un maximum horizontale
@@ -81,8 +80,8 @@
                     
                     if (e.pageX < minwidth || e.pageX > maxwidth || e.pageY<minheight || e.pageY>maxheight)
                         $('#id02').fadeOut(200);
-                });
-            });
+                });*/
+            
     </script>
     
     <script>
@@ -149,6 +148,9 @@
                 .when("/dashboard", {
                     templateUrl :"dashboard.html"
                 })
+                .when("/evaluation",{
+                    templateUrl :"evaluation.html"
+                })
                 .otherwise({redirectTo : '/' });
             });
             
@@ -198,7 +200,33 @@
                     session.connect($scope.emaillogin,$scope.pswlogin);    
                 }
             });
+            app.controller("Ctrlevaluation",function($scope,session,$http){
+                $scope.projet={};
+                $scope.tasks=[];
 
+                $scope.getprojcet=function(id_projet){
+                    $http.post("/getprojet")
+                    .then (function success(data, status, headers, config) {
+                        $scope.projet = JSON.parse(data.data.projet);
+                        $scope.tasks = $scope.projet.gantt.tasks.slice(1,$scope.projet.gantt.tasks.length); 
+                    },function eroor(data, status, headers, config) {
+                    alert( "failure message: " + JSON.stringify({data: data}));
+                     });
+                }
+                
+                $scope.save_evaluation=function(){
+                    var projetevaluation = $scope.projet;
+                    var sum=0;
+                    for(var i=1;i<projetevaluation.gantt.tasks.length;i++){
+                        var id="#"+projetevaluation.gantt.tasks[i].id;
+                        projetevaluation.gantt.tasks[i].progress= parseInt( $(id).val());
+                        sum+=parseInt($(id).val());
+                    }
+                    projetevaluation.gantt.tasks[0].progress = sum/(projetevaluation.gantt.tasks.length-1);
+                    console.log(projetevaluation.gantt.tasks);
+                }
+
+            });
             /*controller du dashboard*/
             app.controller("dashCtrl",function($scope,session){
                 $scope.check=function(){
@@ -326,7 +354,6 @@
                 }
             })
             </script>
-            
     <title>Welcome</title>
 </head>
 <body ng-view>

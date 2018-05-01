@@ -3,7 +3,7 @@ var app     = express();
 var path    = require("path");
 var bodyParser = require('body-parser');
 var session = require('express-session');
-
+var fs = require('fs');
 
 
 app.use( session({secret : 's3Cur3',resave: false,saveUninitialized: false, cookie: {
@@ -26,7 +26,9 @@ app.get('/main.html', function (req, res) {
 app.get('/dashboard.html', function (req, res) {
     res.sendFile(path.join(__dirname+ '/dashboard.html'));
 });
-
+app.get('/evaluation',function(req,res){
+    es.sendFile(path.join(__dirname+ '/evaluation.html'));
+});
 //connexion de l'utilisateur
 app.post('/login',function(req,res){
     if(req.body.email == "parcit@parcit.com" && req.body.psw == "parcit"){
@@ -39,6 +41,19 @@ app.post('/login',function(req,res){
     
 });
 
+app.post('/save',function(req,res){
+    var p=req.body.projet;
+    var g =req.body.gantt;
+    p.gantt=g;
+    fs.writeFileSync('liste_serveurs.json',JSON.stringify(p),'UTF-8');
+    res.send({success:true});
+});
+
+
+app.post('/getprojet',function(req,res){
+    var p = fs.readFileSync('liste_serveurs.json','UTF-8');
+    res.send({projet:p});
+});
 //renvoie vrai si la session de l'utlisateur existe déjà et faux sinon
 app.post('/issession',function(req,res){
     if(req.session.user){
