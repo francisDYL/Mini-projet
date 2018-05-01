@@ -5,6 +5,9 @@ var bodyParser = require('body-parser');
 var session = require('express-session');
 var cons = require('consolidate');
 const mongoose = require('mongoose');
+const passport = require('passport');
+
+const config = require('./config/database');
 
 mongoose.connect(config.database);
 let db = mongoose.connection;
@@ -19,11 +22,14 @@ db.on('error', function(err){
   console.log(err);
 });
 
-app.use( session({secret : 's3Cur3',resave: false,saveUninitialized: false, cookie: {
-            path: "/",
-            httpOnly: true,
-            cookieName: 'session'
-        }}));
+// Express Session Middleware
+app.use(session({
+    secret: 'keyboard cat',
+    resave: true,
+    saveUninitialized: true
+  }));
+
+
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
@@ -83,8 +89,7 @@ app.post('/deconnexion',function(req,res){
 	res.redirect('/');
 });
 
-let users = require('./routes/users');
-app.use('/users', users);
+
 
 var port = process.env.PORT || 3000;
 app.listen(port);

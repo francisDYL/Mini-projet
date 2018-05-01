@@ -22,6 +22,7 @@
     "@angular/material": "^5.2.4",
     "angular-data-grid": "^1.0.0",
     "angular-utils-pagination": "^0.11.1",
+    "bcryptjs": "^2.4.3",
     "body-parser": "^1.18.2",
     "consolidate": "^0.15.1",
     "ejs": "^2.5.9",
@@ -29,6 +30,8 @@
     "express-session": "^1.15.6",
     "hammerjs": "^2.0.8",
     "mongoose": "^5.0.17",
+    "passport": "^0.4.0",
+    "passport-local": "^1.0.0",
     "swig": "^1.4.2"
   }
 }
