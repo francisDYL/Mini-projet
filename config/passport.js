@@ -10,14 +10,16 @@ var type;
 module.exports = function(passport){
   // Local Strategy
   passport.use(new LocalStrategy({
+    usernameField: 'email',
+    passwordField: 'psw',
     passReqToCallback: true,
     session: true
   },function(req,username, password, done){
     // Match Username
-    let query = {username:username};
+    let query = {email:username};
     type=req.session.UsrType;
+    console.log(type);
     if(req.session.UsrType){
-     
       var User =require(path.join('../models/',req.session.UsrType));  
       User.findOne(query, function(err, user){
         if(err) throw err;
@@ -46,7 +48,7 @@ module.exports = function(passport){
   });
 
   passport.deserializeUser(function(id, done) {
-    var User =require(path.join('../models/',req.session.UsrType));  
+    var User =require(path.join('../models/',type));  
     User.findById(id, function(err, user) {
       done(err, user);
     });
