@@ -103,25 +103,24 @@
                                 <form ng-cloak>
                                   <md-toolbar>
                                     <div class="md-toolbar-tools">
-                                      <h2>Mango (Fruit)</h2>
+                                      <h2>{{currentprojet.nom}}</h2>
                                       <span flex></span>
                                       <md-button class="md-icon-button" ng-click="cancel()">
-                                       Cancel
+                                        X
                                       </md-button>
                                     </div>
                                   </md-toolbar>
                               
                                   <md-dialog-content>
                                     <div class="md-dialog-content">
-                                      <h2>ID Projet est {{currentprojet.id}}</h2>
-                                      
+                                      <h2>Projet :{{currentprojet.nom}}</h2>
+                                      <h3>Responsable {{currentprojet.responsable}}</h3>
                                     <p>
                                         {{currentprojet.description}}
                                     </p>
         
                                     </div>
                                   </md-dialog-content>
-                              
                                   <md-dialog-actions layout="row">
                                     <md-button href="http://en.wikipedia.org/wiki/Mango" target="_blank" md-autofocus>
                                       More on Wikipedia
@@ -146,21 +145,11 @@
                     <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span>
                     </div>
                     <div class="container" >
-<<<<<<< HEAD
-                        <label for="role"><b>Comme</b></label>
-                            <div class="container-fluid">
-                                <div class="col-sm-12 col-xs-12 col-md-3"><input type="radio"  ng-model="role" value="user" required> User</div>
-                                <div class="col-sm-12 col-xs-12 col-md-3"><input type="radio"  ng-model="role" value="Prestataire" required> Prestataire</div>
-                            </div> 
-                        <label for="emaillogin"><b>Email</b></label>
-                        <input type="email" placeholder="Enter Email" ng-model="emaillogin" class="form-control" required>
-=======
                         <label for="typelogin"><b>Comme</b></label>
                             <input type="radio" ng-model="typelogin" value="user"> user
                             <input type="radio" ng-model="typelogin" value="prestataire">prestataire<br>
                         <label for="emaillogin"><b>Email</b></label>
                         <input type="email" placeholder="Enter Email" ng-model="emaillogin" name="email" required>
->>>>>>> 655d1b07cd278e7b4a87e21cd19803d103b940ab
                         <div role="alert">
                                 <span class="error" ng-show="myForm.email.$error.email">
                                   Not valid email!</span>
