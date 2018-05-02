@@ -38,7 +38,7 @@
                     <ul class="nav navbar-nav navbar-right">
                         <li>
                            <a href="">
-                               Account
+                               {{user.name}}
                             </a>
                         </li>
                     </ul>
@@ -52,18 +52,21 @@
                     <form id="regForm" ng-controller="formCtrl" ng-init="initialisation()">
                         <h1>Ajouter un Projet:</h1>
                         <!-- One "tab" for each step in the form: -->
-                        <div class="tab container">Information générale:
+                        <div class="tab container">
+                          <h3> Information générale:</h3><br/>
                               <label for="emaillogin"><b>Nom</b></label>
-                              <input type="text" placeholder="Nom projet" ng-model="nomproj" required>
+                              <input type="text" placeholder="Nom projet" ng-model="nomproj" class="form-control" required>
                                 
                               <label for="pswlogin"><b>Lieu</b></label>
-                              <input type="text" placeholder="Lieu" ng-model="lieuproj" required>
+                              <input type="text" placeholder="Lieu" ng-model="lieuproj" class="form-control" required>
 
                               <label for="pswlogin"><b>Description</b></label>
-                              <textarea name="" ng-model="descriptionproj" cols="30" rows="10"></textarea>
+                              <textarea  ng-model="descriptionproj" cols="30" rows="5" class="form-control"  placeholder="description du projet..." required></textarea>
+                              
                         </div>
                         
-                        <div class="tab" id="workSpace" >Diagramme de Gantt
+                        <div class="tab container" id="workSpace" >
+                          <h3>Diagramme de Gantt</h3><br/>
                           
                         </div>
                         <div style="overflow:auto;">

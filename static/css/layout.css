@@ -48,15 +48,16 @@ input[type=text], input[type=password], input[type=email] {
 }
 
 /*dysplay input type radio*/
-input[type=radio]{
+/*input[type=radio]{
     margin-left: 20px;
-}
+}*/
 
 /* Set a style for all buttons */
 .modal button {
-    background-color: #4CAF50;
+    background-color: rgb(46, 151, 236);
     color: white;
     padding: 14px 20px;
+    border-radius: 7px;
     margin: 8px 0;
     border: none;
     cursor: pointer;
@@ -232,8 +233,8 @@ section.resume-section .resume-item .resume-date {
 }
 .divProjet {
     margin: 15px 0;
-    background: rgba(32, 29, 29, 0.9); /* Black background with 0.5 opacity */
-    color: #023b3b; /* Grey text */
+    background: rgb(46, 151, 236); /* Black background with 0.5 opacity */
+    color: #eefdfd; /* Grey text */
     width: 100%; /* Full width */
     padding: 20px; /* Some padding */
 }
@@ -271,12 +272,11 @@ body {
 }
 h1 {
     text-align: center;  
+    color:rgb(46, 151, 236);
 }
 
-.bodytemplate{
-    height: 100%;
-    overflow: scroll;
-    background: white;
+.error{
+    font-size: 1em;
+    color: red;
 }
-
   

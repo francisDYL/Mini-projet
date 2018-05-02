@@ -2,7 +2,6 @@
 <html lang="en" ng-app="myApp" >
 <head>
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-        
         <link  href="https://github.com/angular-ui/bootstrap/blob/master/src/pagination/pagination.js">
 <!-- jQuery library -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
@@ -266,6 +265,13 @@
                     alert( "failure message: " + JSON.stringify({data: data}));
                      });
                 }
+
+                //fonction pour l'inscription
+                this.register=function(uname,emailsignup,pswsignup,sexe){
+                   
+                    alert("inscription de "+uname+" "+" "+emailsignup+" "+pswsignup+" "+sexe);
+                }
+
                 //vérifie si l'utilisateur est bien connecté
                 this.islogged = function () {
                     $http.post("/issession")
@@ -291,6 +297,22 @@
             app.controller("CtrlConnection", function($scope,session) {
                 $scope.login = function() {		
                     session.connect($scope.emaillogin,$scope.pswlogin);    
+                }
+            });
+
+            /*controller pour l'inscription*/
+            app.controller("Ctrlinscription",function($scope,session){
+                $scope.error="";
+                $scope.inscrire = function(){
+                    session.register($scope.uname,$scope.emailsignup,$scope.pswsignup,$scope.sexe);
+                }
+
+                $scope.checkpassword=function(){
+                    if($scope.pswsignup != $scope.pswsignup2) $scope.error="password doesn't match";
+                }
+                
+                $scope.clearerror = function(){
+                    $scope.error="";
                 }
             });
             app.controller("Ctrlevaluation",function($scope,session,$http){
@@ -339,6 +361,8 @@
                 $scope.save=function(){
                     var projettosave={nom:$scope.nomproj,lieu:$scope.lieuproj,description:$scope.descriptionproj,user:$rootScope.user.email,};
                     var gantttosave = ge.saveGantt();
+                    projettosave.date_debut = gantttosave.tasks[0].start;
+                    projettosave.date_fin = gantttosave.tasks[0].end;
                     $http.post("/save",{projet:projettosave,gantt:gantttosave})
                     .then (function success(data, status, headers, config) {
                        
@@ -386,7 +410,7 @@
                     // This function will figure out which tab to display
                     var x = document.getElementsByClassName("tab");
                     // Exit the function if any field in the current tab is invalid:
-                    if (n == 0 && !this.validateForm()) return false;
+                    if (currentTab == 0 && !this.validateForm()) return false;
                     // Hide the current tab:
                     x[currentTab].style.display = "none";
                     // Increase or decrease the current tab by 1:
@@ -409,9 +433,10 @@
                 }
 
                 $scope.validateForm = function(){
-                    var x, y, i, valid = true;
+                    var x, y,z, i, valid = true;
                     x = document.getElementsByClassName("tab");
                     y = x[currentTab].getElementsByTagName("input");
+                    z = x[currentTab].getElementsByTagName("textarea");
                     // A loop that checks every input field in the current tab:
                     for (i = 0; i < y.length; i++) {
                         // If a field is empty...
@@ -421,6 +446,10 @@
                         // and set the current valid status to false
                         valid = false;
                         }
+                    }
+                    if(z[0].value == ""){
+                        z[0].className += " invalid"
+                        valid=false;
                     }
                     // If the valid status is true, mark the step as finished and valid:
                     if (valid) {

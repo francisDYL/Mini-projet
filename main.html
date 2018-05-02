@@ -1,9 +1,9 @@
 <nav class="navbar navbar-default navbar-fixed-top">
         <div class="container-fluid">
             <div class="navbar-header"><a class="navbar-brand navbar-link" href="#">PARCIT </a>
-                <button class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navcol-1"><span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button>
+                <button class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navcol"><span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button>
             </div>
-            <div class="collapse navbar-collapse" id="navcol-1">
+            <div class="collapse navbar-collapse" id="navcol">
                 <ul class="nav navbar-nav navbar-right">
                     <li role="presentation"><a href="#">A propos</a></li>
                     <li role="presentation"><a href="#Projets">Projets </a></li>
@@ -147,17 +147,19 @@
                     </div>
                     <div class="container" >
                         <label for="role"><b>Comme</b></label>
-                            <input type="radio"  name="role" required> User
-                            <input type="radio"  name="role" required> Prestataire<br>
+                            <div class="container-fluid">
+                                <div class="col-sm-12 col-xs-12 col-md-3"><input type="radio"  ng-model="role" value="user" required> User</div>
+                                <div class="col-sm-12 col-xs-12 col-md-3"><input type="radio"  ng-model="role" value="Prestataire" required> Prestataire</div>
+                            </div> 
                         <label for="emaillogin"><b>Email</b></label>
-                        <input type="email" placeholder="Enter Email" ng-model="emaillogin"name="email" required>
+                        <input type="email" placeholder="Enter Email" ng-model="emaillogin" class="form-control" required>
                         <div role="alert">
                                 <span class="error" ng-show="myForm.email.$error.email">
                                   Not valid email!</span>
                               </div>
                         <label for="pswlogin"><b>Password</b></label>
-                        <input type="password" placeholder="Enter Password" ng-model="pswlogin" required>
-                        <button type="submit" ng-click="login()">Login</button>
+                        <input type="password" placeholder="Enter Password" ng-model="pswlogin" class="form-control" required>
+                        <button type="submit" ng-click="login()" >Login</button>
                         <label>
                             <input type="checkbox" checked="checked" name="remember" > Remember me
                         </label>
@@ -170,7 +172,7 @@
 
 <!-- formulaire d'inscripption -->
 <div id="id02" class="modal">
-<form class="modal-content animate" action="/action_page.php">
+<form class="modal-content animate" ng-controller="Ctrlinscription">
     <div class="imgcontainer">
     <span onclick="document.getElementById('id02').style.display='none'" class="close" title="Close Modal">&times;</span>
    
@@ -178,22 +180,25 @@
 
     <div class="container">
         <label for="uname"><b>Username</b></label>
-        <input type="text" placeholder="Enter Username" name="uname" required>
+        <input type="text" placeholder="Enter Username" ng-model="uname" class="form-control" required>
         
         <label for="emailsignup"><b>Email</b></label>
-        <input type="email" placeholder="Enter Email" name="emailsignup" required>
+        <input type="email" placeholder="Enter Email" ng-model="emailsignup" class="form-control" required>
 
         <label for="pswsignup"><b>Password</b></label>
-        <input type="password" placeholder="Enter Password" name="pswsignup" required>
+        <input type="password" placeholder="Enter Password" ng-model="pswsignup" class="form-control" required>
         
         <label for="pswsignup"><b>Confirm Password</b></label>
-        <input type="password" placeholder="Enter Password" name="pswsignup2" required>
+        <input type="password" placeholder="Enter Password" ng-model="pswsignup2" ng-blur="checkpassword()" ng-focus="clearerror()" class="form-control" required>
+        <span class="error" >{{error}}</span><br/>
 
         <label for="sexe"><b>Sexe</b></label>
-        <input type="radio"  name="sexe" required> Homme
-        <input type="radio"  name="sexe" required> Femme
+        <div class="container-fluid">
+                <div class="col-sm-12 col-xs-12 col-md-3"><input type="radio"  ng-model="sexe" value="homme" required> Homme</div>
+                <div class="col-sm-12 col-xs-12 col-md-3"><input type="radio"  ng-model="sexe" value="femme" required> Femme</div>
+        </div> 
 
-        <button type="submit" class="sign-up-button">sign UP</button>
+        <button type="submit" ng-click="inscrire()">sign UP</button>
     </div>
 </form>
 </div>

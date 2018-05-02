@@ -26,7 +26,7 @@ app.get('/main.html', function (req, res) {
 app.get('/dashboard.html', function (req, res) {
     res.sendFile(path.join(__dirname+ '/dashboard.html'));
 });
-app.get('/evaluation', function(req,res){
+app.get('/evaluation.html', function(req,res){
     res.sendFile(path.join(__dirname+ '/evaluation.html'));
 });
 app.get('/navigation.html', function (req, res) {
