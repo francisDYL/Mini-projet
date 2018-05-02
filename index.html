@@ -250,8 +250,8 @@
             app.service('session', function($rootScope,$http) {
                 
                 //fonction pour connecter les utilisateur
-                this.connect=function(emaillogin,pswlogin){
-                    $http.post("/login",{email:emaillogin,psw:pswlogin})
+                this.connect=function(emaillogin,pswlogin,typelogin){
+                    $http.post("/login",{email:emaillogin,psw:pswlogin,type:typelogin})
                     .then (function success(data, status, headers, config) {
                        
                         if(data.data.success){
@@ -295,8 +295,8 @@
             });
             /*controller de connexion*/
             app.controller("CtrlConnection", function($scope,session) {
-                $scope.login = function() {		
-                    session.connect($scope.emaillogin,$scope.pswlogin);    
+                $scope.login = function() {
+                    session.connect($scope.emaillogin,$scope.pswlogin,$scope.typelogin);   
                 }
             });
 
