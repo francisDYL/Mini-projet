@@ -151,17 +151,17 @@ h1 .subtitle {
     color: #FF4A55 !important;
 }
 
-/*     General overwrite     */
+/*     General overwrite    */
 body,
 .wrapper {
-    min-height: 100vh;
+    min-height: 100%;
     position: relative;
 }
-
+/*
 body {
-    background: rgba(203, 203, 210, 0.15);
+    background: rgba(10, 10, 192, 0.801);
 }
-
+*/
 a {
     color: #1DC7EA;
 }

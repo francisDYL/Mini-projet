@@ -1,7 +1,5 @@
 
-.welcomCarousel{
-    margin-top: 50px;
-}
+
 .welcomeProjets{
     height: 400px;
     width: 100%;
@@ -24,7 +22,7 @@
 {
     display:block;
     width:100%;
-    height:500px;
+    height:400px;
 }
 
 @media (max-width: 576px) { 
@@ -237,6 +235,7 @@ section.resume-section .resume-item .resume-date {
     color: #eefdfd; /* Grey text */
     width: 100%; /* Full width */
     padding: 20px; /* Some padding */
+    border-radius: 5px;
 }
 .ProjetsHeader {
     
@@ -246,7 +245,7 @@ section.resume-section .resume-item .resume-date {
     padding: 20px; /* Some padding */
     border-bottom: 1px solid #c5b9bd;
     position: absolute;
-    top: 160px;
+    top: 100px;
     left:0;
     right:0;
     margin-left:auto;
@@ -261,7 +260,6 @@ section.resume-section .resume-item .resume-date {
 }
 body {
     font: 400 15px Lato, sans-serif;
-    line-height: 1.8;
     color: #818181;
     background-image:url(../images/pexels-6.jpeg);    
     background-attachment:fixed;

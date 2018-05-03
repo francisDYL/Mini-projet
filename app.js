@@ -38,7 +38,7 @@ app.get('/profil.html', function (req, res) {
 //connexion de l'utilisateur
 app.post('/login',function(req,res){
     if(req.body.email == "parcit@parcit.com" && req.body.psw == "parcit" && req.body.type=="prestataire"){
-        req.session.user={name:"Parcituser",email:"parcit@parcit.com",psw:"parcit"};
+        req.session.user={name:"Parcituser",email:"parcit@parcit.com",psw:"parcit",last_name:"parcit",address:"Massira 2,Bloc 10 N° 60",city:"Safi",country:"Maroc",about_me:"Lamborghini Mercy, Your chick she so thirsty, I'm in that two seat Lambo."};
         res.send({success:true,user:req.session.user});
         
     }else{
