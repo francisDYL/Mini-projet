@@ -231,8 +231,8 @@ section.resume-section .resume-item .resume-date {
 }
 .divProjet {
     margin: 15px 0;
-    background: rgb(46, 151, 236); /* Black background with 0.5 opacity */
-    color: #eefdfd; /* Grey text */
+    background: rgba(247, 247, 247, 0.9); /* Black background with 0.5 opacity */
+    color: #023b3b;/* Grey text */
     width: 100%; /* Full width */
     padding: 20px; /* Some padding */
     border-radius: 5px;
@@ -257,6 +257,10 @@ section.resume-section .resume-item .resume-date {
 /*Style for Body*/
 .bg-grey {
     background-color: #f6f6f6;
+    margin-right: 160px;
+    margin-left: 160px;
+    border-radius: 5px;
+    padding: 20px; 
 }
 body {
     font: 400 15px Lato, sans-serif;
@@ -270,7 +274,8 @@ body {
 }
 h1 {
     text-align: center;  
-    color:rgb(46, 151, 236);
+    color:rgba(247, 247, 247, 0.9);
+    border-bottom: 1px solid ;
 }
 
 .error{

@@ -53,9 +53,14 @@
           <div class="container" ng-controller="MyCtrl" id="Projets">
                 <section  class="resume-section p-3 p-lg-5 d-flex flex-column">
                     <div class="ProjetsHeader">
-                        <h1 class="mb-5">Projets</h1>
-                        <div class="row ">
-                                <div class="col-sm-3">
+                                <div class="input-group">
+                                    <input type="text"  placeholder="Search by name" ng-model="_query1">
+                                    <div class="input-group-btn">
+                                      <button class="btn btn-default "><i class="glyphicon glyphicon-search"></i></button>
+                                    </div>
+                                </div>
+                        <div class="row" >
+                            <div class="col-sm-4">
                                 <label for="Show">Nombre des projets</label>
                                 <select ng-model="pageSize" id="pageSize" class="form-control" placeholder="Nbr de page" ng-init="pageSize='10'">
                                     <option value="5">5</option>
@@ -64,26 +69,23 @@
                                     <option value="20">20</option>
                                  </select>
                                </div>
-                               <div class="col-sm-3">
+                               <div class="col-sm-4">
                                     <label for="Order">Organiser par</label>
                                     <select class="form-control" ng-model="order2" ng-init="order2='name'">
-                                             <option value="id">ID</option>
+                                             <option value="date_debut">date debut</option>
                                              <option value="name">Name</option>
                                      </select>
                                 </div>
-                        </div>
-                        <div class="row" >
-                            <div class="col-sm-4">
-                                <input type="text" placeholder="Filtre by name" class="form-control" ng-model="_query1">
-                            </div>
-                            <div class="col-sm-4" >
-                                <input type="text" placeholder="Filtre by description" class="form-control" ng-model="_query2">
+                            <div class="col-sm-4" style="height: 60,56px;">
+                                <label for="Filtre">Filtre by description</label>
+                                <input type="text" placeholder="description" class="form-control" ng-model="_query2">
                             </div>
                         </div>
                     </div>
+                    <h1 class="mb-5">Projets</h1>
                         <div class="resume-item d-flex flex-column flex-md-row mb-5 divProjet" ng-repeat="item in data | filter:{nom:_query1,description:_query2} | orderBy: order2 | startFrom:currentPage*pageSize | limitTo:pageSize">
                             <div ng-click="myFunc($event,item)" class="resume-content mr-auto">
-                                <h2 class="mb-0">{{item.id}}</h2>
+                                <h2 class="mb-0">{{item.nom}}</h2>
                                 <div class="subheading mb-3">{{item.responsable}}</div>
                                 <p>{{item.description}}</p>
                             </div>
